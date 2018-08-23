@@ -10,3 +10,6 @@ Thumbs.db
 
 # __pycache__ files
 *.pyc
+
+# vscode files
+.vscode/

@@ -56,8 +56,8 @@ class API(object):
         """
         search_url = self.base_url + self.search_url_extension
         params = []
-        if q == None:
-            raise "Invalid request. You must provide a search term"
+        if q == None or q == "":
+            raise ValueError("Invalid request. You must provide a search term")
         else:
             q = urlencode({"q":q})
             params.append(q)

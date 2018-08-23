@@ -1,35 +1,36 @@
 import unittest
+import sys
+import requests
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import twitter_api
-import twitter
 
 class testTwitterAPICall(unittest.TestCase):
 
     def setUp(self):
-        connection = twitter_api.querySearch("", "", "", "")
-        self.search = connection.make_search_query_request(geocode=("34.052235", "-118.243683", "15mi"), count=2, result_type="recent", include_entities=True)
-        self.data = twitter_api.structureQueryData(self.search)
+        self.connection = twitter_api.API()
+        self.base_url = self.connection.base_url
+        self.search_url_extension = self.connection.search_url_extension
 
-    def test_get_data(self):
-        result = self.data.getData()
-        self.assertEqual(3, len(result))
+    def testAPIRequest(self):
+        headers = {"Authorization": self.connection.getBearerToken()}
+        search_url = self.base_url + self.search_url_extension + "q=los%20Angeles"
+        r = requests.get(search_url, headers=headers)
+        self.assertEqual(200, r.status_code)
 
-    def test_get_Tweets(self):
-        tweet = self.data.getTweet()
+    def testQueryArgumentValidation(self):
+        """
+        if query argument is not present in querySearch, it should raise Value Error
+        """
+        with self.assertRaises(ValueError) as err:
+            self.connection.querySearch()
+
+    def testQuerySearchType(self):
+        search_json = self.connection.querySearch("test", count=1, return_json=True)
+        search_string = self.connection.querySearch("test", count=1, return_json=False)
         with self.subTest():
-            self.assertEqual(2,len(tweet)) ## Should return the same lenght than the amount of tweets parsed
-            self.assertEqual(11,len(tweet[0]))
-
-    def test_get_user(self):
-        user = self.data.getUser()
-        with self.subTest():
-            self.assertEqual(2,len(user)) ## Should return the same lenght than the amount of tweets parsed
-            self.assertEqual(12, len(user[0]))
-
-    def test_get_user_mentioned(self):
-        user_mentioned = self.data.getUserMentioned()
-        with self.subTest():
-            self.assertEqual(2,len(user_mentioned)) ## Should return the same lenght than the amount of tweets parsed
-            self.assertEqual(3, len(user_mentioned[0]))
+            self.assertIsInstance(search_json,dict)
+            self.assertIsInstance(search_string,str)
 
 if __name__ == '__main__':
     unittest.main()

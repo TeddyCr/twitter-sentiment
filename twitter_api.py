@@ -206,14 +206,13 @@ class structureStatusesData(object):
 
                 else:
                     tweets[i]["entities"] = "NULL"
-                    user_mentioned.append([
+                    user_mentioned.append({
                             "NULL",
                             "NULL",
-                            "NULL"
-                    ])   
+                    })   
 
             user.append({
-                    "user":{"id":elements["user"]["id"],
+                    "id":elements["user"]["id"],
                     "name":elements["user"]["name"],
                     "screen_name":elements["user"]["screen_name"],
                     "location":elements["user"]["location"],
@@ -224,7 +223,7 @@ class structureStatusesData(object):
                     "favourites_count":elements["user"]["favourites_count"],
                     "verified":elements["user"]["verified"],
                     "statuses_count":elements["user"]["statuses_count"],
-                    "lang":elements["user"]["lang"]}
+                    "lang":elements["user"]["lang"]
             })
 
             i += 1

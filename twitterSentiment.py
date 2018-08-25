@@ -4,6 +4,7 @@ import base64
 import json
 import datetime 
 import os
+import textblob
 
 class API(object):
     """

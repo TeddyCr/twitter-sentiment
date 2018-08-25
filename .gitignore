@@ -13,3 +13,6 @@ Thumbs.db
 
 # vscode files
 .vscode/
+
+# local testing
+test/local_test.py

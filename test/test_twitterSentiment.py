@@ -3,13 +3,13 @@ import sys
 import requests
 import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import twitter_sentiment
+import twitterSentiment
 
 class testTwitterAPICall(unittest.TestCase):
 
     def setUp(self):
-        count = 2
-        self.connection = twitter_sentiment.API()
+        count = 1
+        self.connection = twitterSentiment.API()
         self.base_url = self.connection.base_url
         self.search_url_extension = self.connection.search_url_extension
         self.search = self.connection.querySearch(q="Los Angeles", count=count)
@@ -35,17 +35,17 @@ class testTwitterAPICall(unittest.TestCase):
             self.assertIsInstance(search_string,str)
 
     def testGetData(self):
-        structured_data = twitter_sentiment.structureStatusesData(self.search)
+        structured_data = twitterSentiment.structureStatusesData(self.search)
         data = structured_data.getData()
         self.assertEqual(3, len(data))
 
     def testGetTweets(self):
-        structured_data = twitter_sentiment.structureStatusesData(self.search)
+        structured_data = twitterSentiment.structureStatusesData(self.search)
         tweet = structured_data.getTweet()
         self.assertGreaterEqual(11, len(tweet[0]))
     
     def testGetUser(self):
-        structured_data = twitter_sentiment.structureStatusesData(self.search)
+        structured_data = twitterSentiment.structureStatusesData(self.search)
         user = structured_data.getUser()
         self.assertEqual(12, len(user[0]))
 

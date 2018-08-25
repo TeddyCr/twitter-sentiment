@@ -1,4 +1,4 @@
 from .twitterSentiment import API, structureStatusesData
 
-name = 'twitter_sentiment'
+name = 'twitterSentiment'
 __version__ = '0.2.1'

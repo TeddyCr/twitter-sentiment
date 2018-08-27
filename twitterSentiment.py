@@ -4,7 +4,9 @@ import base64
 import json
 import datetime 
 import os
-import textblob
+from textblob import Blobber
+from textblob.sentiments import NaiveBayesAnalyzer
+import re
 
 class API(object):
     """
@@ -114,7 +116,7 @@ class API(object):
         else:
             return statuses.text
 
-class structureStatusesData(object):
+class StructureStatusesData(object):
     """
     Creates an object that will handle data formating. structureStatusesData object takes a twitter statuses
     returned from the querySearch method of the API object
@@ -242,3 +244,28 @@ class structureStatusesData(object):
     def getUserMentioned(self):
         user_mentioned = self.getData()[1]
         return user_mentioned
+
+class SentimentScore(object):
+
+    def __init__(self, tweet_list):
+        pattern = re.compile(r'https:\/\/[\w\d\.\-\/]+')
+        self.tweet_list = []
+
+        for status in tweet_list:
+            cleaned_status = re.sub(pattern,'', status["full_text"]) # remove URLs from tweet
+            self.tweet_list.append(cleaned_status)
+
+        self.blobber = Blobber(analyzer=NaiveBayesAnalyzer())
+
+    def getSentimentScore(self):
+        sentiment_score = []
+
+        for el in self.tweet_list:
+            blob = self.blobber(el)
+            score = blob.sentiment
+            sentiment_score.append(score[1] - score[2])
+
+        return round(sum(sentiment_score)/len(sentiment_score),2)
+
+
+    

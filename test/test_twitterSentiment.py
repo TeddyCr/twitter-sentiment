@@ -35,17 +35,17 @@ class testTwitterAPICall(unittest.TestCase):
             self.assertIsInstance(search_string,str)
 
     def testGetData(self):
-        structured_data = twitterSentiment.structureStatusesData(self.search)
+        structured_data = twitterSentiment.StructureStatusesData(self.search)
         data = structured_data.getData()
         self.assertEqual(3, len(data))
 
     def testGetTweets(self):
-        structured_data = twitterSentiment.structureStatusesData(self.search)
+        structured_data = twitterSentiment.StructureStatusesData(self.search)
         tweet = structured_data.getTweet()
         self.assertGreaterEqual(11, len(tweet[0]))
     
     def testGetUser(self):
-        structured_data = twitterSentiment.structureStatusesData(self.search)
+        structured_data = twitterSentiment.StructureStatusesData(self.search)
         user = structured_data.getUser()
         self.assertEqual(12, len(user[0]))
 

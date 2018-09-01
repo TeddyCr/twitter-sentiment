@@ -8,8 +8,8 @@ python-sentiment is a Python package leveraging NLP algorithm and the Twitter AP
 Installation 
 ------------ 
 Installing twitter-sentiment is simple, you just have to use pip.
-
 ::
+
     pip install twitter-sentiment
 
 

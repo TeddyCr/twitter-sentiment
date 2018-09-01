@@ -9,9 +9,9 @@ Installation
 ------------ 
 Installing twitter-sentiment is simple, you just have to use pip.
 
-`
+``
 pip install twitter-sentiment
-`
+``
 
 Documentation
 -------------  

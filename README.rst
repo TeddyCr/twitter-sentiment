@@ -23,7 +23,6 @@ twitter-sentiment let you score a tweet/list of tweets on a scale of -1 to 1. A 
 
 .. |license|  image:: https://img.shields.io/packagist/l/doctrine/orm.svg?style=flat-square   :alt: Packagist
 .. |python_version| image:: https://img.shields.io/badge/Python-3-yellow.svg?style=flat-square
-.. |test| 
-.. image:: https://img.shields.io/teamcity/codebetter/bt428.svg?style=flat-square   :alt: TeamCity CodeBetter
+.. |test| .. image:: https://img.shields.io/teamcity/codebetter/bt428.svg?style=flat-square   :alt: TeamCity CodeBetter
 .. |coverage| image:: https://img.shields.io/teamcity/coverage/bt428.svg?style=flat-square   :alt: TeamCity CodeBetter Coverage
 

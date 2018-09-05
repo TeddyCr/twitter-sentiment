@@ -1,6 +1,6 @@
-==========================================================
-# twitter-sentiment: the easiest way to get twitter insights
-==========================================================
+======================================================================
+twitter-sentiment: Twitter library to explore sentiments behind tweets
+======================================================================
 
 *Release v0.1.0*
 
@@ -19,7 +19,7 @@ The library also includes features to get structured tweets, users, and user men
 
     >> 0.9824962449006399
 
-features
+Features
 --------
 * Connect to the tweeter API in a matter of seconds
 * Get tweets sentiment score (ranges from -1 to 1)
@@ -34,3 +34,5 @@ Install it now
 
 Guide
 -----
+.. toctree::
+    installation.rst

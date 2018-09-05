@@ -265,7 +265,7 @@ class SentimentScore(object):
             score = blob.sentiment
             sentiment_score.append(score[1] - score[2])
 
-        return round(sum(sentiment_score)/len(sentiment_score),2)
+        return sum(sentiment_score)/len(sentiment_score)
 
 
     

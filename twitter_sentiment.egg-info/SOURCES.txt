@@ -1,9 +1,0 @@
-README.rst
-setup.py
-test/test_twitterSentiment.py
-twitterSentiment/__init__.py
-twitterSentiment/twitterSentiment.py
-twitter_sentiment.egg-info/PKG-INFO
-twitter_sentiment.egg-info/SOURCES.txt
-twitter_sentiment.egg-info/dependency_links.txt
-twitter_sentiment.egg-info/top_level.txt

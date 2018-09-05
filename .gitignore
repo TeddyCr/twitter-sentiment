@@ -16,3 +16,9 @@ Thumbs.db
 
 # local testing
 test/local_test.py
+
+# distribution folders
+build/
+dist/
+twitter_sentiment.egg-info/
+

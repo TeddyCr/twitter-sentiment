@@ -24,8 +24,8 @@ class API(object):
     """
 
     def __init__(self):
-        self.client_key = os.environ.get("CLIENT_KEY")
-        self.client_secret = os.environ.get("CLIENT_SECRET")
+        self.client_key = os.environ.get("TWITTER_CLIENT_KEY")
+        self.client_secret = os.environ.get("TWITTER_CLIENT_SECRET")
         self.base_url = "https://api.twitter.com/"
         self.token_url_extension = 'oauth2/token'
         self.search_url_extension = '1.1/search/tweets.json?'

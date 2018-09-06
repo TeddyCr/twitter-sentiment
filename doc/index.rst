@@ -34,5 +34,5 @@ Install it now
 
 Guide
 -----
-.. toctree::
-    installation.rst
+.. contents::
+    `Installation <https://twitter-sentiment.readthedocs.io/en/latest/Installation.html>`

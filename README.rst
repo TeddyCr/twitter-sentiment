@@ -15,7 +15,7 @@ Installing twitter-sentiment is simple, you just have to use pip.
 
 Documentation
 -------------  
-Documentation is available at `twitter-sentiment.readthedocs.io https://twitter-sentiment.readthedocs.io/en/latest/index.html`_
+Documentation is available at `twitter-sentiment.readthedocs.io <https://twitter-sentiment.readthedocs.io/en/latest/index.html>`_
 
 twitter-sentiment in a nutshel  
 ------------------------------

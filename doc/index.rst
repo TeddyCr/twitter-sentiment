@@ -32,7 +32,9 @@ Install it now
 
     pip install twitter-sentiment
 
-Guide
------
+Table of Contents
+----------------
 .. toctree::
+    :maxdepth: 2
+    license
     installation

@@ -57,58 +57,62 @@ class API(object):
         """
 
         """
-        search_url = self.base_url + self.search_url_extension
-        params = []
-        if q == None or q == "":
+        self.search_url = self.base_url + self.search_url_extension
+        self.params = []
+        if (q == None or q == "") and not geocode:
             raise ValueError("Invalid request. You must provide a search term")
+        elif (q == None or q == ""):
+            pass
         else:
-            q = urlencode({"q":q})
-            params.append(q)
+            val = urlencode({"q":q})
+            self.params.append(val)
+
+        if geocode:
+            self.params.append(f'geocode={geocode}')
 
         if count != 15 or count != None:
             count = urlencode({"count":count})
-            params.append(count)
-
-        if geocode:
-            params.append(f'geocode={geocode[0]},{geocode[1]},{geocode[2]}')
+            self.params.append(count)
         
         if lang:
-            params.append(f'lang={lang}')
+            self.params.append(f'lang={lang}')
 
         if result_type != "mixed":
             if result_type == "recent" or result_type == "popular":
-                params.append(f'result_type={result_type}')
+                self.params.append(f'result_type={result_type}')
             else:
-                raise f"result_type {result_type} is not a valid parameter. Make sure to use either 'mixed', 'recent', or 'popular'"
+                raise ValueError(f"result_type {result_type} is not a valid parameter. Make sure to use either 'mixed', 'recent', or 'popular'")
         
         if until:
             if datetime.datetime.strptime(until, '%Y-%m-%d'):
-                params.append(f'until={until}')
+                self.params.append(f'until={until}')
             else:
-                raise "Invalide date format. Please make sure to use a date format 'YYYY-MM-DD'" 
+                raise ValueError("Invalide date format. Please make sure to use a date format 'YYYY-MM-DD'") 
 
         if since_id:
-            params.append(f'since_id={since_id}')
+            self.params.append(f'since_id={since_id}')
 
         if max_id:
-            params.append(f'max_id={max_id}')
+            self.params.append(f'max_id={max_id}')
 
         if tweet_mode == "extended":
-            params.append(f'tweet_mode={tweet_mode}')
+            self.params.append(f'tweet_mode={tweet_mode}')
 
         if include_entities:
-            params.append(f'include_entities={include_entities}')
+            self.params.append(f'include_entities={include_entities}')
 
-        for parameter in params:
-            if "q" in parameter:
-                search_url += parameter
+        for parameter in self.params:
+            if 'q' in parameter:
+                self.search_url += parameter
+            elif not 'q' in self.params[0] and 'geocode' in parameter:
+                self.search_url += parameter 
             else:
-                search_url += f'&{parameter}'
+                self.search_url += f'&{parameter}'
 
         ## Prepare header for request
         headers = {"Authorization": self.getBearerToken()}
         ## Execute request
-        statuses = requests.get(search_url, headers=headers)
+        statuses = requests.get(self.search_url, headers=headers)
 
         if return_json:
             statuses = json.loads(statuses.text)

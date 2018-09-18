@@ -17,6 +17,7 @@ twitter-sentiment supports Python 3.6+
 Dependencies
 ------------
 When installing twitter-sentiment, pip will automatically install:
+
 * requests
 * urllib3
 * TextBlob 

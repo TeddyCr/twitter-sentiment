@@ -40,3 +40,4 @@ Table of Contents
     license
     installation
     gettingstarted
+    APIreference

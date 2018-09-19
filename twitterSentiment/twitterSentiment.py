@@ -261,15 +261,18 @@ class SentimentScore(object):
 
         self.blobber = Blobber(analyzer=NaiveBayesAnalyzer())
 
-    def getSentimentScore(self):
-        sentiment_score = []
+    def getSentimentClassification(self):
+        sentiment_classification = []
 
         for el in self.tweet_list:
             blob = self.blobber(el)
             score = blob.sentiment
-            sentiment_score.append(score[1] - score[2])
+            if score[0] == 'pos':
+                sentiment_classification.append(1)
+            else:
+                sentiment_classification.append(0)
 
-        return sum(sentiment_score)/len(sentiment_score)
+        return sum(sentiment_classification)/len(sentiment_classification)
 
 
     

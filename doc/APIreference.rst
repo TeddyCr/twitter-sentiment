@@ -13,6 +13,7 @@ This classes is directly imported from twitterSentiment. It handles the basic co
 
 **twitterSentiment.API()**
     *API object*  
+    
     the API() class manage the connection to the Tweeter API. API() does not take any parameter, though, it is required to create a `TWITTER_CLIENT_KEY` and `TWITTER_CLIENT_SECRET` environment variable in your system to connect to your Twitter application. It is required to create an API object before calling any of the class methods.
 
 

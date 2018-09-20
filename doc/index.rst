@@ -2,10 +2,11 @@
 twitter-sentiment: Twitter library to explore sentiments behind tweets
 ======================================================================
 
-*Release v0.1.0*
+*Release v0.0.1*
 
-twitter-sentiment is a lightway python 3 library that allows you to evaluate the sentiment of tweets.  
-The library also includes features to get structured tweets, users, and user mentions to build and develop insight regarding users and their tweets.
+twitter-sentiment is a lightway python 3 library that allows you to evaluate the sentiment of tweets. Behind the scene, twitter-sentiment classify tweets as either positive (1) or negative (0) and returns a ratio of positive tweets.
+
+The library also includes features to get structured tweets, users, and user mentions to build and develop insights regarding users and their tweets.
 
 ::
 
@@ -15,14 +16,14 @@ The library also includes features to get structured tweets, users, and user men
     search = connection.querySearch("Los Angeles", count=1, result_type='recent', lang='en')
     data = twitterSentiment.StructureStatusesData(search)
     sentiment = twitterSentiment.SentimentScore(data.getTweet())
-    print(sentiment.getSentimentScore())
+    print(sentiment.getSentimentClassification())
 
-    >> 0.9824962449006399
+    >> 0.6666
 
 Features
 --------
 * Connect to the tweeter API in a matter of seconds
-* Get tweets sentiment score (ranges from -1 to 1)
+* Get ratio of positive tweets amongts the ones analyzed (ranges from 0 to 1)
 * Get raw tweet response
 * Get structured tweets, users, and user mentions data to leverage insights
 

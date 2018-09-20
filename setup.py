@@ -1,6 +1,6 @@
 import setuptools
 
-with open("README.rst", "r") as f:
+with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
@@ -14,8 +14,12 @@ setuptools.setup(
     url="https://github.com/TeddyCr/twitter-sentiment",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3.6+",
+        "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: Mac OS",
+        "Operating System :: MacOS",
+        "Development Status :: 4 - Beta",
+        "Programming Language :: Python :: 3.6",
+        "Intended Audience :: Other Audience",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence"
     ],
 )

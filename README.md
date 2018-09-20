@@ -17,5 +17,5 @@ Documentation is available at [twitter-sentiment.readthedocs.io](https://twitter
 
 twitter-sentiment in a nutshel  
 ------------------------------
-twitter-sentiment let you score a tweet/list of tweets on a scale of -1 to 1. A score below 0 represents a negative tweet, while a score greater than 0 represents a positive tweet. To score a tweet, twitter-sentiment levereage TextBlob Naive Byaise NLP library. More information can be find at [textblob.readthedocs.io](https://textblob.readthedocs.io/en/dev/advanced_usage.html#sentiment-analyzers)
+twitter-sentiment let you classify a tweet/list of tweets as positive (1) or negative (0). twitter-sentiment then calculate and returns the ration of positive tweets. To classify a tweet, twitter-sentiment levereage TextBlob Naive Byaise NLP library. More information can be find at [textblob.readthedocs.io](https://textblob.readthedocs.io/en/dev/advanced_usage.html#sentiment-analyzers)
 

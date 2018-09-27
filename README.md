@@ -1,7 +1,7 @@
 Python library to Explore Emotions Behind Tweets
 ================================================
 
-python-sentiment is a Python package leveraging NLP algorithm and the Twitter API to score the sentiment of a tweet.
+twitter-sentiment is a Python library leveraging NLP algorithm and the Twitter API to classify the sentiment of a tweet.
 
 Installation 
 ------------ 

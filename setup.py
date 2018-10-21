@@ -8,7 +8,8 @@ setuptools.setup(
     version="0.0.1",
     author="Teddy Crepineau",
     author_email="teddy.crepineau@gmail.com",
-    description="Twitter sentiment is a Python library leveraging NLP and the Twitter API to determine the emotion of a tweet",
+    description="Twitter sentiment is a Python library leveraging NLP "
+                "and the Twitter API to determine the emotion of a tweet",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/TeddyCr/twitter-sentiment",

@@ -4,14 +4,14 @@ API Reference
 
 API Class
 ---------
-This classe is directly imported from twitterSentiment. It handles the basic connection to the API as well as tweet searches.
+This class is directly imported from twitterSentiment. It handles the basic connection to the API as well as tweet searches.
 
 ::
 
     from twitterSentiment import API
 
 **twitterSentiment.API()** - *API object*  
-    the API() class manage the connection to the Tweeter API. API() does not take any parameter, though, it is required to create a `TWITTER_CLIENT_KEY` and `TWITTER_CLIENT_SECRET` environment variable in your system to connect to your Twitter application. It is required to create an API object before calling any of the class methods.
+    the API() class manages the connection to the Twitter API. API() does not take any parameter, though, it is required to create a `TWITTER_CLIENT_KEY` and `TWITTER_CLIENT_SECRET` environment variable in your system to connect to your Twitter application. It is required to create an API object before calling any of the class methods.
 
 
 **getBearerToken()** - *string*
@@ -21,7 +21,7 @@ This classe is directly imported from twitterSentiment. It handles the basic con
 **searchQuery()** - *dictionnary*
     It is the main class to send search query to the Twitter API. It returns a dictionnary object. The class has 11 parameters:
         * **q** - a string. This is where the search keyword is passed [REQUIRED - optional if geocode is not specified]
-        * **geocode** - a string composed of 3 values separated by comas (lat, long, radius). Radius needs to be specified in either miles or kilometer by passing "mi" or "km" [OPTIONAL - required if q not specified]
+        * **geocode** - a string composed of 3 values separated by commas (lat, long, radius). Radius needs to be specified in either miles or kilometer by passing "mi" or "km" [OPTIONAL - required if q not specified]
         * **lang** - a string representing the language filter for the tweets to return [OPTIONAL]
         * **result_type** - a string. This parameter accepts only 2 values "mixed" or "recent" [REQUIRED]
         * **count** - integer. The number of tweets to return per request. Default to 15 [REQUIRED]
@@ -46,7 +46,7 @@ This classe is directly imported from twitterSentiment. It handles the basic con
 
 
 **token_url_extension** - *string*
-    Will return the API URL extension for the token autorization.
+    Will return the API URL extension for the token authorization.
 
 
 **search_url_extension** - *string*

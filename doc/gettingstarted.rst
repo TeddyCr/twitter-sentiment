@@ -53,7 +53,7 @@ Once you have instantiated an `API()` object you will be able to search for twee
 
     >> {'statuses': [{'created_at': 'Thu Sep 06 19:38:16 +0000 2018', 'id': 1037787081936973824, 'id_str': '1037787081936973824', 'full_text': ....
 
-`searchQuery()` returns a dictionnary with 1 key and 1 value. The value of the dictionnary is a list with one dictionnary per count of tweets returned.
+`searchQuery()` returns a dictionary with 1 key and 1 value. The value of the dictionary is a list with one dictionary per count of tweets returned.
 
 Getting Structured Data
 -----------------------
@@ -73,7 +73,7 @@ Once you have your tweet(s), you can create an object `StructureStatusesData()` 
 
     >> ([{id': 856800998, 'name': 'Someone', 'screen_name': 'some_one', ....}])
 
-The getData() method is the most general one. It returns a tuple of length 3 composed of list, each holding tweets, user, and user mentions data. Each list contains a dictionnary per `count` of tweets defined in the searchQuery() method 
+The getData() method is the most general one. It returns a tuple of length 3 composed of list, each holding tweets, user, and user mentions data. Each list contains a dictionary per `count` of tweets defined in the searchQuery() method 
 
 Getting Sentiment Classification Ratio
 --------------------------------------

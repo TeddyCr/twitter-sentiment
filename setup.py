@@ -1,11 +1,30 @@
 import setuptools
+from setuptools.command.install import install
+
+import os
+import sys
+
+VERSION = '0.0.1'
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
+class VerifyVersion(install):
+    """
+    Custome command to verify the package version matches the git tag version
+    """
+    description = "Command ran to check if the new uploaded version matches the git tag"
+    
+    def run(self):
+         tag = os.getenv('CIRCLE_TAG')
+
+         if tag != VERSION:
+             info = f'Tag {tag} does not match current version {VERSION} in setup.py'
+             sys.exit(info)
+
 setuptools.setup(
     name="twitter-sentiment",
-    version="0.0.1",
+    version=VERSION,
     author="Teddy Crepineau",
     author_email="teddy.crepineau@gmail.com",
     description="Twitter sentiment is a Python library leveraging NLP "
@@ -23,4 +42,7 @@ setuptools.setup(
         "Intended Audience :: Other Audience",
         "Topic :: Scientific/Engineering :: Artificial Intelligence"
     ],
+    cmdclass= {
+        'verify': VerifyVersion,
+    }
 )

@@ -1,0 +1,14 @@
+version: 2.1
+commands: 
+  pushToPypi:
+    description: "commands to push updated version of package to pypi"
+    parameters:
+      url:
+        type: string
+        default: https://pypi.org/legacy/
+    steps:
+      - run: echo << parameters.url >> 
+executors:
+  twitterSentimentEnv:
+    docker:
+      - image: circleci/python:3.6

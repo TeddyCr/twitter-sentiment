@@ -11,7 +11,7 @@ with open("README.md", "r") as f:
 
 class VerifyVersion(install):
     """
-    Custome command to verify the package version matches the git tag version
+    Custom command to verify the package version matches the git tag version
     """
     description = "Command ran to check if the new uploaded version matches the git tag"
     

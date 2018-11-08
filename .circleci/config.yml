@@ -31,3 +31,28 @@ jobs:
 
       - store_artifacts:
           path: htmlcov 
+    
+    runTest:
+      docker:
+        - image: circleci/python:3.6
+
+      steps:
+        - checkout
+
+        - restore_cache:
+          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+
+        - run:
+          name: run twitterSentiment tests
+          command: |
+            python3 -m venv twitterSentiment
+            . venv/bin/activate
+            pip install requests
+            cd test/
+            python3 -m unittest test_twitterSentiment
+
+        - save_cache:
+          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          path: "twittersentiment"
+
+

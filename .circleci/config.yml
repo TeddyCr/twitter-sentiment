@@ -58,6 +58,25 @@ jobs:
             key: v1-dependencies-{{ checksum "requirements.txt" }}
             path: "twitter_sentiment"
 
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+
+
           
 
 

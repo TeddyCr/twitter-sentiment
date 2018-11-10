@@ -11,7 +11,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: ~/twitter-sentiment
 
     steps:
       - checkout
@@ -40,7 +40,6 @@ jobs:
           command: |
             python3 -m venv twitterSentiment
             . venv/bin/activate
-            pip install requests
             cd test/
             python3 -m unittest test_twitterSentiment
 

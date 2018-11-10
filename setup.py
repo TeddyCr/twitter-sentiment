@@ -4,7 +4,7 @@ from setuptools.command.install import install
 import os
 import sys
 
-VERSION = '0.0.2git a'
+VERSION = '0.0.3'
 
 with open("README.md", "r") as f:
     long_description = f.read()

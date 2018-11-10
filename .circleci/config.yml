@@ -51,7 +51,7 @@ jobs:
           command: |
             python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
-            python3 setup.py VerifyVersion
+            python3 setup.py verify
 
       - save_cache:
           paths: 

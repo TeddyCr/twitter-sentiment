@@ -16,11 +16,11 @@ class VerifyVersion(install):
     description = "Command ran to check if the new uploaded version matches the git tag"
     
     def run(self):
-         tag = os.getenv('CIRCLE_TAG')
-
-         if tag != VERSION:
-             info = f'Tag {tag} does not match current version {VERSION} in setup.py'
-             sys.exit(info)
+        tag = os.getenv('CIRCLE_TAG')
+        print(tag)
+        if tag != VERSION:
+            info = f'Tag {tag} does not match current version {VERSION} in setup.py'
+            sys.exit(info)
 
 setuptools.setup(
     name="twitter-sentiment",

@@ -4,7 +4,7 @@ from setuptools.command.install import install
 import os
 import sys
 
-VERSION = '0.0.53'
+VERSION = '0.0.54'
 
 with open("README.md", "r") as f:
     long_description = f.read()

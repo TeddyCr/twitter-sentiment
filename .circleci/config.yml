@@ -19,8 +19,6 @@ jobs:
       - save_cache:
           paths:
             - ./twitter_sentiment
-            - /usr/local/bin
-            - /usr/local/lib/python3.6/site-packages
           key: v1-dependencies-{{ checksum "setup.py" }}
 
   runLibraryTest:

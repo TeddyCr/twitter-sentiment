@@ -8,6 +8,8 @@ jobs:
 
     steps:
       - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
 
       - restore_cache:
           keys:
@@ -24,6 +26,8 @@ jobs:
       - save_cache:
           paths:
             - ./twitter_sentiment
+            - /usr/local/bin
+            - /usr/local/lib/python3.6/site-packages
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
   runLibraryTest:
@@ -40,7 +44,6 @@ jobs:
       - run:
           name: run twitter_sentiment tests
           command: |
-            python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
             cd test/
             python3 -m unittest test_twitterSentiment
@@ -66,7 +69,6 @@ jobs:
       - run:
           name: verify git tag vs version
           command: |
-            python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
             python3 setup.py verify
 

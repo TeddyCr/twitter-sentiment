@@ -23,7 +23,7 @@ jobs:
             - ./twitter_sentiment
             - /usr/local/bin
             - /usr/local/lib/python3.6/site-packages
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "setup.py" }}
 
   runLibraryTest:
     docker:
@@ -34,7 +34,7 @@ jobs:
       
       - restore_cache:
           keys: 
-          - v1-dependencies-{{ checksum "requirements.txt" }}
+          - v1-dependencies-{{ checksum "setup.py" }}
 
       - run:
           name: run twitter_sentiment tests
@@ -46,7 +46,7 @@ jobs:
       - save_cache:
           paths:
             - ./twitter_sentiment
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "setup.py" }}
 
       - store_artifacts:
           path: test-reports
@@ -59,7 +59,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "setup.py" }}
 
       - run:
           name: verify git tag vs version
@@ -89,7 +89,7 @@ jobs:
       - save_cache:
           paths: 
             - ./twitter_sentiment
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "setup.py" }}
 
 workflows:
   version: 2

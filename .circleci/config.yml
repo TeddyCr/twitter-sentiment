@@ -8,8 +8,6 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo chown -R circleci:circleci 777 /usr/local/bin
-      - run: sudo chown -R circleci:circleci 777 /usr/local/lib/python3.6/site-packages
 
       - run:
           name: install dependencies
@@ -39,7 +37,9 @@ jobs:
       - run:
           name: run twitter_sentiment tests
           command: |
+            python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
+            pip install -r requirements.txt
             cd test/
             python3 -m unittest test_twitterSentiment
 
@@ -64,7 +64,9 @@ jobs:
       - run:
           name: verify git tag vs version
           command: |
+            python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
+            pip install -r requirements.txt
             python3 setup.py verify
 
       - run:
@@ -83,6 +85,7 @@ jobs:
       - run:
           name: upload package to pypi server
           command: |
+            python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
             twin upload dist/*
 

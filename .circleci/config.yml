@@ -26,12 +26,28 @@ jobs:
             - ./twitter_sentiment
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
+  runLibraryTest:
+    docker:
+      - image: circleci/python:3.6
+
+    steps:
+      - checkout
+      
+      - restore_cache:
+          keys: 
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+
       - run:
           name: run twitter_sentiment tests
           command: |
             . twitter_sentiment/bin/activate
             cd test/
             python3 -m unittest test_twitterSentiment
+
+      - save_cache:
+          paths:
+            - ./twitter_sentiment
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - store_artifacts:
           path: test-reports
@@ -53,6 +69,25 @@ jobs:
             . twitter_sentiment/bin/activate
             python3 setup.py verify
 
+      - run:
+          name: create package files
+          command: |
+            python3 setup.py sdist bdist_wheel
+
+      - run:
+          name: create .pypirc file
+          command: |
+            echo -e "[pypi]" >> .pypirc
+            echo -e "repository = https://pypi.org/legacy/"
+            echo -e "username = TeddyCr" >> .pypirc
+            echo -e " = $PYPI_PASSWORD" >> .pypirc
+
+      - run:
+          name: upload package to pypi server
+          command: |
+            . twitter_sentiment/bin/activate
+            twin upload dist/*
+
       - save_cache:
           paths: 
             - ./twitter_sentiment
@@ -67,9 +102,19 @@ workflows:
             tags:
               only: /.*/
 
-      - deploy:
+      - runLibraryTest:
           requires:
             - build
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+
+            branches:
+              ignore: /.*/
+
+      - deploy:
+          requires:
+            - runLibraryTest
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/

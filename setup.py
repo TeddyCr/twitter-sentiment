@@ -4,7 +4,7 @@ from setuptools.command.install import install
 import os
 import sys
 
-VERSION = '0.0.5'
+VERSION = '0.0.51'
 
 with open("README.md", "r") as f:
     long_description = f.read()
@@ -17,7 +17,7 @@ class VerifyVersion(install):
     
     def run(self):
         tag = os.getenv('CIRCLE_TAG')
-        print(tag)
+
         if tag != VERSION:
             info = f'Tag {tag} does not match current version {VERSION} in setup.py'
             sys.exit(info)

@@ -86,7 +86,7 @@ jobs:
             python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
             pip install --user --upgrade twine
-            python3 twine upload dist/*
+            python -m twine upload dist/*
 
       - save_cache:
           paths: 

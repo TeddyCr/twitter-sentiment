@@ -24,4 +24,5 @@ Continuous Integration
 twitter-sentiment uses circleci as a continuous integration tool. Pushing a new git tag to the remote repositiory will trigger circleci workflow and:
 * validate the test in /test/test_twitterSentiment.py
 * check for a match between the `VERSION` variable in the setup.py file and the git tag version. 
-If all tests pass, the build will be automatically upload to the pypi server
+
+If all tests pass, the build will be automatically uploaded to the pypi server

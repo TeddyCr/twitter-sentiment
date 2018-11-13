@@ -75,10 +75,10 @@ jobs:
       - run:
           name: create .pypirc file
           command: |
-            echo -e "[pypi]" >> .pypirc
-            echo -e "repository = https://pypi.org/legacy/"
-            echo -e "username = TeddyCr" >> .pypirc
-            echo -e " = $PYPI_PASSWORD" >> .pypirc
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "repository = https://pypi.org/legacy/" >> ~/.pypirc
+            echo -e "username = TeddyCr" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
 
       - run:
           name: upload package to pypi server
@@ -86,7 +86,7 @@ jobs:
             python3 -m venv twitter_sentiment
             . twitter_sentiment/bin/activate
             pip install --upgrade twine
-            python -m twine upload dist/*
+            twine upload dist/*
 
       - save_cache:
           paths: 

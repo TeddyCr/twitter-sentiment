@@ -51,7 +51,7 @@
     {"tweet": "It's very good", "label":"pos"},
     {"tweet": "This is an A+ tweet, sir", "label":"pos"},
     {"tweet": "This was said somewhat tongue-in-cheek, but you could make the case that Berkshire is now like the Dow on steroids", "label":"pos"},
-    {"tweet": "Bridges at Toko Ri is awesome (so is the movie)", "label":"pos"},
+    {"tweet": "Bridges at Toko Ri is awesome (so is the movie)", "label":"pos"}
 
 
 ]
